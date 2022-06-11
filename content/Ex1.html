@@ -91,7 +91,7 @@ img.add_border {
 </style>
 
 </head>
-<body>
+<body onload="brython()">
 <div class='container-fluid'><nav>
         
     <div class="site-wrap">
@@ -140,7 +140,31 @@ img.add_border {
           
         </header>
     <div id="tipue_search_content">Brython << <a href='Brython.html'>Previous</a> <a href='Ex2.html'>Next</a> >> Ex2<br /><h1>Ex1</h1>
-<p><a href="https://hubochin.github.io/wcm2022/content/brython1.html">Test page</a></p>
+<script src="https://cdn.jsdelivr.net/npm/brython@3/brython.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/brython@3/brython_stdlib.js"></script>
+<div id="brython_div"></div>
+<script type="text/python">
+from browser import document as doc
+# 以下將利用 html 產生所需的繪圖畫布
+from browser import html
+# 利用 math 函式庫執行三角函數運算
+import math
+canvas = html.CANVAS(width = 200, height = 100)
+#canvas.style = {"width": "100%"}
+canvas.id = "taiwan_flag"
+# 將圖畫至 id 為 brython_div 的 cnavas 標註
+brython_div = doc["brython_div"]
+brython_div <= canvas
+# 準備繪圖畫布
+canvas = doc["taiwan_flag"]
+ctx = canvas.getContext("2d")
+flag_w = canvas.width
+flag_h = canvas.height
+# 先畫滿地紅
+ctx.fillStyle='rgb(255, 0, 0)'
+ctx.fillRect(0,0,flag_w,flag_h)
+</script>
+<p></p>
 <br />Brython << <a href='Brython.html'>Previous</a> <a href='Ex2.html'>Next</a> >> Ex2</div>
         
     <!-- footer -->
