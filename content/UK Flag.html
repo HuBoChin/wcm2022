@@ -139,17 +139,20 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">Brython << <a href='Brython.html'>Previous</a> <a href='Ex2.html'>Next</a> >> Ex2<br /><h1>Ex1</h1>
+    <div id="tipue_search_content">Ex3 << <a href='Ex3.html'>Previous</a> <a href='fossil.html'>Next</a> >> fossil<br /><h1>UK Flag</h1>
 <script src="https://cdn.jsdelivr.net/npm/brython@3/brython.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/brython@3/brython_stdlib.js"></script>
 <div id="brython_div"></div>
 <script type="text/python">
+# 畫中華人民共和國國旗
+# 根據 https://en.wikipedia.org/wiki/Flag_of_China 規格繪圖
+# 導入 doc
 from browser import document as doc
 # 以下將利用 html 產生所需的繪圖畫布
 from browser import html
 # 利用 math 函式庫執行三角函數運算
 import math
-canvas = html.CANVAS(width = 200, height = 100)
+canvas = html.CANVAS(width = flag_w, height = flag_h)
 #canvas.style = {"width": "100%"}
 canvas.id = "taiwan_flag"
 # 將圖畫至 id 為 brython_div 的 cnavas 標註
@@ -158,14 +161,118 @@ brython_div <= canvas
 # 準備繪圖畫布
 canvas = doc["taiwan_flag"]
 ctx = canvas.getContext("2d")
+
+# 進行座標轉換, x 軸不變, y 軸反向且移動 canvas.height 單位光點
+# ctx.setTransform(1, 0, 0, -1, 0, canvas.height)
+
+# 以下採用 canvas 原始座標繪圖
 flag_w = canvas.width
 flag_h = canvas.height
+
+#color
+color_BLUE='#4863a0'
+color_RED ='#B31942'
+color_YELLOW ='#FFFF00'
+color_WHITE ='#FFFFFF'
+
 # 先畫滿地紅
-ctx.fillStyle='rgb(255, 0, 0)'
+ctx.fillStyle=color_BLUE
 ctx.fillRect(0,0,flag_w,flag_h)
+
+ctx.strokeStyle=color_WHITE
+ctx.beginPath()
+ctx.moveTo(0, 0)
+ctx.lineTo(flag_w, flag_h)
+ctx.lineWidth = 60
+ctx.stroke()
+
+ctx.moveTo(0,flag_h )
+ctx.lineTo(flag_w,0)
+ctx.lineWidth = 60
+ctx.stroke()
+ctx.closePath()
+
+ctx.beginPath()
+ctx.strokeStyle=color_RED
+ctx.moveTo(0,0)
+ctx.lineTo(200,100)
+ctx.lineTo(155,100)
+ctx.lineTo(0,22)
+ctx.lineTo(0,0)
+ctx.lineWidth = 1
+ctx.fillStyle=color_RED
+ctx.fill()
+ctx.closePath()
+
+ctx.beginPath()
+ctx.strokeStyle=color_RED
+ctx.moveTo(flag_w,flag_h)
+ctx.lineTo(flag_w,flag_h-22)
+ctx.lineTo(flag_w-155,200)
+ctx.lineTo(400, 200)
+ctx.lineTo(flag_w,flag_h)
+ctx.lineWidth = 1
+ctx.fillStyle=color_RED
+ctx.fill()
+ctx.closePath()
+
+ctx.beginPath()
+ctx.strokeStyle=color_RED
+ctx.moveTo(0,flag_h)
+ctx.lineTo(45,flag_h)
+ctx.lineTo(245,200)
+ctx.lineTo(200,200)
+ctx.lineTo(0,flag_h)
+ctx.lineWidth = 1
+ctx.fillStyle=color_RED
+ctx.fill()
+ctx.closePath()
+
+ctx.beginPath()
+ctx.strokeStyle=color_RED
+ctx.moveTo(flag_w,0)
+ctx.lineTo(400,100)
+ctx.lineTo(flag_w-245,100)
+ctx.lineTo(flag_w-45,0)
+ctx.lineTo(flag_w,0)
+ctx.lineWidth = 1
+ctx.fillStyle=color_RED
+ctx.fill()
+ctx.closePath()
+
+ctx.strokeStyle=color_WHITE
+ctx.beginPath()
+ctx.moveTo(0, 150)
+ctx.lineTo(flag_w, 150)
+ctx.lineWidth = 100
+ctx.stroke()
+ctx.closePath()
+
+ctx.strokeStyle=color_WHITE
+ctx.beginPath()
+ctx.moveTo(flag_h, 0)
+ctx.lineTo(flag_h, flag_h)
+ctx.lineWidth = 100
+ctx.stroke()
+ctx.closePath()
+
+ctx.strokeStyle=color_RED
+ctx.beginPath()
+ctx.moveTo(flag_h, 0)
+ctx.lineTo(flag_h, flag_h)
+ctx.lineWidth = 60
+ctx.stroke()
+ctx.closePath()
+
+ctx.strokeStyle=color_RED
+ctx.beginPath()
+ctx.moveTo(0, 150)
+ctx.lineTo(flag_w, 150)
+ctx.lineWidth = 60
+ctx.stroke()
+ctx.closePath()
 </script>
-<p></p>
-<br />Brython << <a href='Brython.html'>Previous</a> <a href='Ex2.html'>Next</a> >> Ex2</div>
+<br />Ex3 << <a href='Ex3.html'>Previous</a> <a href='fossil.html'>Next</a> >> fossil</div>
         
     <!-- footer -->
       <div class="container">
